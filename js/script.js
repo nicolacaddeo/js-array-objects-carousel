@@ -1,4 +1,4 @@
-/*
+
 const images = [
     {
         url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -28,16 +28,11 @@ const images = [
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
     },
 ];
-*/
+
 
 // settings
 const NUM_IMAGES = 5;
 const CHANGE_IMAGE_DELAY = 5;
-
-const images = createImageArray(NUM_IMAGES);
-console.log(images);
-
-
 
 let activeIndex = 0;
 buildCarousel(images, activeIndex);
@@ -77,8 +72,9 @@ function buildCarousel(urls, activeIndex) {
     const carouselImages = document.querySelector('.carousel-images');
     const carouselThumbs = document.querySelector('.carousel-thumbs');
     let content = '';
-    for (let i = 0; i < urls.length; i++) {
-        const url = urls[i];
+    for (let i = 0; i < images.length; i++) {
+        const url = images[i].url;
+        const title = images[i].title;
         const imageClass = i === activeIndex ? 'carousel-img active' : 'carousel-img'
         content += `<img class="${imageClass}" src="${url}" alt="${url}" />`;
     }
@@ -88,15 +84,9 @@ function buildCarousel(urls, activeIndex) {
 }
 
 
-function createImageArray(numImages) {
-    const images = [];
-    for (let i = 1; i <= numImages; i++) {
-        const fileName = i < 10 ? '0' + i : i;
-        const url = 'img/' + fileName + '.jpg';
-        images.push(url);
-    }
 
-    return images;
-}
+
+
+
 
 
